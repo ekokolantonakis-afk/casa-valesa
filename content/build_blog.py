@@ -17,11 +17,26 @@ HERO_KEYS = [
  ("beach","beach"),("dining","dining"),("bedroom","bedroom"),("living","living"),
  ("exterior","exterior"),("village","exterior"),("apartment","living"),
 ]
-def hero_for(hint):
+import os as _os
+CREDITS={}
+try: CREDITS=json.load(open(f"{ROOT}/blog/heroes2/CREDITS.json"))
+except Exception: pass
+def hero_path(slug, hint=None):
+    p=f"{ROOT}/blog/heroes2/{slug}.jpg"
+    if _os.path.exists(p): return f"heroes2/{slug}.jpg"
+    # fallback to scene still
     h=(hint or "").lower()
     for k,f in HERO_KEYS:
-        if k in h: return f
-    return "balcony"
+        if k in h: return f"heroes/{f}.jpg"
+    return "heroes/balcony.jpg"
+def hero_credit(slug):
+    c=CREDITS.get(slug) or {}
+    if not c: return ""
+    src=c.get("source",""); auth=c.get("author",""); lic=c.get("license",""); url=c.get("url","")
+    if "AI" in src or "Pollinations" in src: return '<p class="imgcredit">Image: AI-generated illustration</p>'
+    bits=[x for x in [auth, lic] if x]
+    txt=" · ".join(bits) if bits else src
+    return f'<p class="imgcredit">Image: <a href="{html.escape(url)}" target="_blank" rel="noopener nofollow">{html.escape(txt)}</a> (via Wikimedia Commons)</p>'
 
 NAV = ('<header class="nav"><div class="inner">'
  '<a class="brand" href="../index.html">Casa <b>Valesa</b></a>'
@@ -50,7 +65,7 @@ def cta(lang):
 
 def jsonld(a, lang):
     url=f"{SITE}/blog/{a['slug']}.html"
-    img=f"{SITE}/blog/heroes/{hero_for(a.get('hero_image'))}.jpg"
+    img=f"{SITE}/blog/{hero_path(a['slug'],a.get('hero_image'))}"
     art={"@context":"https://schema.org","@type":"Article","headline":a.get("seo_title") or a["h1"],
       "description":a.get("meta_description",""),"image":img,"inLanguage":lang,
       "mainEntityOfPage":url,"author":{"@type":"Organization","name":"Casa Valesa"},
@@ -68,7 +83,7 @@ def jsonld(a, lang):
 
 def render(a):
     lang = "ro" if a["slug"]=="cazare-thassos-familie" else "en"
-    hero = hero_for(a.get("hero_image"))
+    hero = hero_path(a["slug"], a.get("hero_image"))
     crumb_journal = "Jurnal" if lang=="ro" else "Journal"
     secs="".join(f'<h2>{html.escape(s["h2"])}</h2>\n{s["html"]}\n' for s in a.get("sections",[]))
     tk=a.get("key_takeaways") or []
@@ -92,17 +107,18 @@ def render(a):
 <link rel="canonical" href="{SITE}/blog/{a['slug']}.html">
 <meta property="og:type" content="article"><meta property="og:title" content="{html.escape(a.get('seo_title') or a['h1'])}">
 <meta property="og:description" content="{html.escape(a.get('meta_description',''))}">
-<meta property="og:image" content="{SITE}/blog/heroes/{hero}.jpg"><meta property="og:url" content="{SITE}/blog/{a['slug']}.html">
+<meta property="og:image" content="{SITE}/blog/{hero}"><meta property="og:url" content="{SITE}/blog/{a['slug']}.html">
 <meta name="twitter:card" content="summary_large_image">
 {FONTS}<link rel="stylesheet" href="blog.css">
 {jsonld(a,lang)}
 </head><body>
 {NAV}
-<div class="post-hero"><img src="heroes/{hero}.jpg" alt="{html.escape(a['h1'])}">
+<div class="post-hero"><img src="{hero}" alt="{html.escape(a['h1'])}">
   <div class="wrap"><div class="crumb"><a href="../index.html">Casa Valesa</a> / <a href="index.html">{crumb_journal}</a></div>
   <h1>{html.escape(a['h1'])}</h1><div class="meta">{html.escape(meta_line)}</div></div></div>
 <article><div class="wrap">
 <div class="lead-wrap">{a.get('intro_html','')}</div>
+{hero_credit(a["slug"])}
 {tkhtml}
 {secs}
 {faqhtml}
@@ -139,7 +155,7 @@ for a,_ in sorted(built,key=lambda x:silo_key(x[0])):
 cards_html=""
 for silo,items in groups.items():
     cs="".join(
-      f'<a class="card" href="{a["slug"]}.html"><img src="heroes/{hero_for(a.get("hero_image"))}.jpg" alt="{html.escape(a["h1"])}" loading="lazy"><div class="b"><h3>{html.escape(a["h1"])}</h3><p>{html.escape(a.get("meta_description",""))}</p></div></a>'
+      f'<a class="card" href="{a["slug"]}.html"><img src="{hero_path(a["slug"],a.get("hero_image"))}" alt="{html.escape(a["h1"])}" loading="lazy"><div class="b"><h3>{html.escape(a["h1"])}</h3><p>{html.escape(a.get("meta_description",""))}</p></div></a>'
       for a in items)
     cards_html+=f'<section class="silo"><h2>{html.escape(silo)}</h2><div class="cards">{cs}</div></section>'
 idx=f'''<!DOCTYPE html><html lang="en"><head>

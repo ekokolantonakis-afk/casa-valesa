@@ -79,3 +79,5 @@ footer .brand{color:#fff;font-size:1.5rem;display:block;margin-bottom:8px}
 .card p{margin:0;font-size:.9rem;color:var(--muted)}
 .idxwrap{max-width:1140px;margin:0 auto;padding:0 24px}
 @media(max-width:640px){.post-hero{height:46vh}}
+.imgcredit{font-size:.72rem;color:var(--muted);margin:-6px 0 18px;font-family:"JetBrains Mono",monospace}
+.imgcredit a{color:var(--muted)}
