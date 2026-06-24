@@ -13,11 +13,20 @@ FONTS=('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="pr
 cats=d["categories"]
 subnav="".join(f'<a href="#{c["id"]}">{ICON.get(c["id"],"")} {html.escape(c["title"])}</a>' for c in cats)+'<a href="#history">📜 History</a><a href="#daytrips">🗺️ Day trips</a>'
 
+import urllib.parse, re as _re
+HOUSE="40.730728,24.5505072"  # Casa Valesa, Skala Sotiros
+def directions(name):
+    # strip parentheticals / slashes for a clean map query
+    q=_re.sub(r'\(.*?\)','',name).split('/')[0].strip()
+    dest=urllib.parse.quote(f"{q}, Thassos, Greece")
+    url=f"https://www.google.com/maps/dir/?api=1&origin={HOUSE}&destination={dest}&travelmode=driving"
+    return f'<a class="dir" href="{url}" target="_blank" rel="noopener">🧭 Directions from Casa Valesa</a>'
+
 def item_block(it):
     meta = f'<span class="meta">{html.escape(it.get("meta",""))}</span>' if it.get("meta") else ""
     tip  = f'<p class="tip"><b>Local tip:</b> {html.escape(it["tip"])}</p>' if it.get("tip") else ""
     return (f'<div class="iv"><div class="iv-h"><h3>{html.escape(it["name"])}</h3>{meta}</div>'
-            f'{it.get("desc","")}{tip}</div>')
+            f'{it.get("desc","")}{tip}{directions(it["name"])}</div>')
 
 def cat_block(c):
     items="".join(item_block(it) for it in c.get("items",[]))
@@ -45,7 +54,10 @@ a{{color:var(--aegean)}}img{{max-width:100%;display:block}}
 header.nav{{position:sticky;top:0;z-index:50;background:rgba(247,246,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}}
 header.nav .inner{{max-width:1140px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between}}
 .brand{{font-family:"Cormorant Garamond",serif;font-size:1.4rem;color:var(--pine);text-decoration:none}}
-.brand b{{font-weight:600}}.nav a.book{{background:var(--sun);color:var(--pine);padding:8px 16px;border-radius:100px;text-decoration:none;font-size:.82rem;font-weight:600}}
+.brand b{{font-weight:600}}
+.brandwrap{{display:flex;align-items:center;gap:10px}}
+.loc-badge{{display:inline-flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pine);background:var(--marble-2);border:1px solid var(--line);padding:5px 9px;border-radius:100px;white-space:nowrap}}
+@media(max-width:560px){{.loc-badge{{display:none}}}}.nav a.book{{background:var(--sun);color:var(--pine);padding:8px 16px;border-radius:100px;text-decoration:none;font-size:.82rem;font-weight:600}}
 .hero{{position:relative;height:56vh;min-height:360px;display:flex;align-items:flex-end;color:#fff;overflow:hidden}}
 .hero img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
 .hero::after{{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,28,22,.2),rgba(8,28,22,.82))}}
@@ -67,6 +79,8 @@ header.nav .inner{{max-width:1140px;margin:0 auto;padding:13px 24px;display:flex
 .iv .meta{{display:block;font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.06em;color:var(--aegean);margin:4px 0 8px;text-transform:uppercase}}
 .iv p{{margin:6px 0;color:#2c352f;font-size:.96rem}}
 .iv .tip{{background:var(--marble-2);border-radius:8px;padding:8px 12px;font-size:.88rem;color:var(--pine);margin-top:10px}}
+.iv .dir{{display:inline-block;margin-top:12px;font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.04em;color:var(--aegean);text-decoration:none;border:1px solid var(--line);padding:7px 12px;border-radius:100px}}
+.iv .dir:hover{{background:var(--aegean);color:#fff}}
 .hist{{padding:52px 0;background:var(--marble-2)}}.hist h2{{font-size:clamp(2rem,5vw,3rem);margin-bottom:16px}}.hist .wrap>div{{max-width:72ch;font-size:1.05rem}}
 .daytrips{{padding:52px 0}}.daytrips h2{{font-size:clamp(2rem,5vw,3rem);margin-bottom:20px}}
 .dts{{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px}}
@@ -79,7 +93,7 @@ header.nav .inner{{max-width:1140px;margin:0 auto;padding:13px 24px;display:flex
 footer{{background:#0c241c;color:rgba(247,246,242,.7);font-size:.86rem}}footer .wrap{{padding:40px 24px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}}footer a{{color:var(--seaglass);text-decoration:none}}footer .brand{{color:#fff;font-size:1.5rem;display:block;margin-bottom:8px}}
 @media(max-width:640px){{.hero{{height:46vh}}}}
 </style></head><body>
-<header class="nav"><div class="inner"><a class="brand" href="index.html">Casa <b>Valesa</b></a>
+<header class="nav"><div class="inner"><span class="brandwrap"><a class="brand" href="index.html">Casa <b>Valesa</b></a><span class="loc-badge"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="#1F7A78" d="M3 16c2-5 5-8 9-8s7 3 9 8c-3 2-5.5 2-9 2s-6 0-9-2z"/><circle cx="18" cy="6" r="2.1" fill="#E3A93C"/><path stroke="#7fb9b3" stroke-width="1.3" fill="none" d="M2 20c2 1 4 1 6 0s4-1 6 0 4 1 6 0"/></svg>Thassos · Greece</span></span>
 <nav><a href="blog/index.html" style="text-decoration:none;color:var(--pine);margin-right:18px;font-size:.86rem">Journal</a><a class="book" href="index.html#book">Book now</a></nav></div></header>
 <div class="hero"><img src="blog/heroes/beach-path.jpg" alt="Explore Thassos">
 <div class="wrap"><span class="eyebrow">Θάσος · The island guide</span><h1>{html.escape(d.get("title","Explore Thassos"))}</h1></div></div>
