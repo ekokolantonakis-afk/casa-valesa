@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leave a review — Casa Valesa, Skala Sotiros, Thassos</title>
+<meta name="description" content="Stayed at Casa Valesa? Share a few words about your stay in Skala Sotiros, Thassos." />
+<link rel="icon" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--pine:#143d2e;--emerald:#1f5e46;--aegean:#1f8a82;--sand:#e9e1d2;--marble:#F7F5EF;--marble-2:#ECE7DA;--ink:#18241f;--muted:#5d6b62;--line:rgba(20,61,46,.14);--shadow:0 24px 60px -24px rgba(20,61,46,.4)}
+*{box-sizing:border-box}body{margin:0;background:var(--marble);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;color:var(--pine);margin:0}
+a{color:var(--aegean)}
+.head{display:flex;align-items:center;gap:10px;margin:10px 0 26px}
+.head img{height:46px;border-radius:7px}.head .b{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--pine)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);max-width:560px;width:100%;padding:34px}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--aegean)}
+.card h1{font-size:2.2rem;margin:8px 0 6px}.card .sub{color:var(--muted);margin-bottom:24px;font-size:.96rem}
+.stars{display:flex;gap:6px;margin:0 0 18px;direction:rtl;justify-content:flex-end}
+.stars input{display:none}
+.stars label{font-size:2.2rem;color:#dcd7c8;cursor:pointer;transition:color .15s}
+.stars label:hover,.stars label:hover~label,.stars input:checked~label{color:var(--sand)}
+.stars label.on,.stars input:checked,.stars input:checked+label{}
+.stars{flex-direction:row-reverse}
+label.fld{display:block;font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 5px}
+input[type=text],input[type=email],textarea{width:100%;font-family:"Manrope";font-size:.98rem;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:var(--marble);margin-bottom:16px}
+textarea{resize:vertical;min-height:110px}
+.row{display:flex;gap:12px}.row>div{flex:1}
+.hp{position:absolute;left:-9999px}
+button{width:100%;background:var(--emerald);color:#fff;border:0;border-radius:100px;padding:15px;font-weight:600;font-size:1rem;cursor:pointer;font-family:"Manrope"}
+button:hover{transform:translateY(-1px)}
+.msg{margin-top:14px;text-align:center;font-size:.92rem;min-height:1.2em}.msg.ok{color:var(--emerald)}.msg.err{color:#b3402f}
+.also{margin-top:22px;text-align:center;font-size:.88rem;color:var(--muted)}
+.also a{display:inline-block;margin:6px 6px 0;background:var(--marble-2);border-radius:100px;padding:8px 15px;text-decoration:none;color:var(--pine);font-weight:600;font-size:.82rem}
+.thanks{display:none;text-align:center}.thanks.show{display:block}.thanks h2{font-size:2rem;margin-bottom:10px}.thanks p{color:var(--muted)}
+.starsel{font-size:2.4rem;color:#dcd7c8;cursor:pointer;user-select:none;text-align:center;margin-bottom:20px}
+.starsel span{transition:color .12s}.starsel span.on{color:#e0a83a}
+</style>
+</head>
+<body>
+<div class="head"><img src="/brand/logo-icon.png" alt="Casa Valesa"><span class="b">Casa Valesa</span></div>
+<div class="card">
+  <div id="formwrap">
+    <span class="eyebrow">Skala Sotiros · Thassos</span>
+    <h1>How was your stay?</h1>
+    <p class="sub">Thank you for staying with us. A few honest words help other families find Casa Valesa.</p>
+    <form id="rf">
+      <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off">
+      <label class="fld">Your rating</label>
+      <div class="starsel" id="starsel" role="radiogroup" aria-label="Rating">
+        <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+      </div>
+      <input type="hidden" name="score" id="score" value="5">
+      <div class="row"><div><label class="fld">Your name</label><input type="text" name="name" required></div><div><label class="fld">Country (optional)</label><input type="text" name="country"></div></div>
+      <label class="fld">Email (optional)</label><input type="email" name="email">
+      <label class="fld">When did you stay? (optional)</label><input type="text" name="stay" placeholder="e.g. Family · August 2025">
+      <label class="fld">Your review</label><textarea name="text" required placeholder="What did you love? The apartment, the hosts, the beach…"></textarea>
+      <button type="submit" id="sb">Share my review</button>
+      <p class="msg" id="msg" aria-live="polite"></p>
+    </form>
+  </div>
+  <div class="thanks" id="thanks">
+    <h2>Thank you! 🙏</h2>
+    <p>Your review has reached us and will appear on the site once we’ve had a quick look. We’re grateful you stayed.</p>
+    <div class="also">If you have a moment, it would mean the world to also post it on:
+      <div><a href="https://search.google.com/local/writereview?placeid=" id="gl" target="_blank" rel="noopener">★ Google</a>
+      <a href="https://www.booking.com/hotel/gr/casa-valesa.html" target="_blank" rel="noopener">★ Booking.com</a></div>
+    </div>
+  </div>
+</div>
+<p style="margin-top:18px"><a href="/">← Back to Casa Valesa</a></p>
+<script>
+// google review link (place)
+document.getElementById('gl').href="https://maps.google.com/?cid=1712313664098478263";
+// star selector
+let score=5; const sel=document.getElementById('starsel');
+function paint(){[...sel.children].forEach(s=>s.classList.toggle('on', +s.dataset.v<=score));document.getElementById('score').value=score;}
+[...sel.children].forEach(s=>{s.onclick=()=>{score=+s.dataset.v;paint();};s.onmouseenter=()=>{[...sel.children].forEach(x=>x.classList.toggle('on',+x.dataset.v<=+s.dataset.v));};});
+sel.onmouseleave=paint; paint();
+// submit
+const f=document.getElementById('rf'), msg=document.getElementById('msg'), sb=document.getElementById('sb');
+f.addEventListener('submit',async e=>{
+  e.preventDefault(); sb.disabled=true; msg.className='msg'; msg.textContent='Sending…';
+  try{const r=await fetch('/api/review.php',{method:'POST',body:new URLSearchParams(new FormData(f))});const d=await r.json();
+    if(d.ok){document.getElementById('formwrap').style.display='none';document.getElementById('thanks').classList.add('show');}
+    else{msg.className='msg err';msg.textContent='Please add your name and a few words.';sb.disabled=false;}
+  }catch(_){msg.className='msg err';msg.textContent='Network error — please try again.';sb.disabled=false;}
+});
+</script>
+</body>
+</html>

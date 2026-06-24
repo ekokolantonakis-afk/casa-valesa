@@ -156,6 +156,12 @@ section{padding:clamp(64px,9vw,120px) 0;position:relative}
 .rvcount{display:block;font-size:.9rem;color:var(--muted);text-decoration:none;margin-top:2px}.rvcount b{color:var(--emerald)}
 .rvsubs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.04em;color:var(--pine)}
 .rvsubs span b{color:var(--aegean)}
+.rvsources{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0 2px}
+.rvsrc{display:inline-flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:9px 18px;text-decoration:none;color:var(--pine);box-shadow:0 12px 28px -22px rgba(20,61,46,.55)}
+.rvsrc .n{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--emerald);line-height:1}
+.rvsrc .lab{font-size:.78rem;color:var(--muted);text-align:left;line-height:1.25}.rvsrc .lab b{color:var(--pine)}
+.rvcard .src{font-family:"JetBrains Mono",monospace;font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#003580;border-radius:5px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+.rvcard .src.google{background:#34A853}.rvcard .src.direct{background:var(--olive)}
 .rvgrid{columns:3 300px;column-gap:18px;margin:34px 0 8px;text-align:left}
 @media(max-width:760px){.rvgrid{columns:1}}
 .rvcard{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:0 0 18px;box-shadow:0 10px 30px -22px rgba(20,61,46,.5)}
@@ -405,16 +411,15 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding:18px 26px;text-al
 <section class="rv" id="reviews">
   <div class="wrap reveal">
     <span class="eyebrow" data-i18n="rv_eyebrow">Guest reviews</span>
-    <div class="rvhead">
-      <div class="rvbadge"><div class="rvnum">10</div><div class="rvslash">/10</div></div>
-      <div class="rvmeta">
-        <div class="rvword">Exceptional</div>
-        <a class="rvcount" href="https://www.booking.com/hotel/gr/casa-valesa.html" target="_blank" rel="noopener"><b>11</b> verified guest reviews on Booking.com ↗</a>
-        <div class="rvsubs" id="rvsubs"></div>
-      </div>
-    </div>
+    <h2 style="font-size:clamp(1.9rem,4.5vw,3rem);margin:10px auto 6px">Loved by guests</h2>
+    <div class="rvsources" id="rvsources"></div>
+    <div class="rvsubs" id="rvsubs"></div>
     <div class="rvgrid" id="rvgrid"></div>
-    <div class="rvactions"><a class="btn btn-pri" href="#book" data-i18n="rv_cta_book">Book your stay</a><a class="btn btn-ghost" style="color:var(--pine)" href="https://www.booking.com/hotel/gr/casa-valesa.html" target="_blank" rel="noopener">Read all on Booking.com</a></div>
+    <div class="rvactions">
+      <a class="btn btn-pri" href="#book" data-i18n="rv_cta_book">Book your stay</a>
+      <a class="btn btn-gold" href="/review.html">★ Leave a review</a>
+      <a class="btn btn-ghost" style="color:var(--pine)" href="https://www.booking.com/hotel/gr/casa-valesa.html" target="_blank" rel="noopener">Booking.com</a>
+    </div>
   </div>
 </section>
 
@@ -563,7 +568,22 @@ const REVIEWS=[
  {n:"Aliman",c:"🇷🇴 Romania",d:"Family · Jun 2025",s:10,t:"Excellent location."}
 ];
 document.getElementById('rvsubs').innerHTML=Object.entries(RV_SUBS).map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join('');
-document.getElementById('rvgrid').innerHTML=REVIEWS.map(r=>`<div class="rvcard"><div class="top"><div><div class="who">${r.n}</div><div class="meta">${r.c} · ${r.d}</div></div><div class="sc">${r.s}</div></div><p class="q">“${r.t}”</p></div>`).join('');
+const SRCLABEL={booking:"Booking.com",google:"Google",direct:"Guest"};
+function renderReviews(data){
+  const sources=(data.sources||[]).filter(s=>s.count>0);
+  document.getElementById('rvsources').innerHTML=sources.map(s=>`<a class="rvsrc" ${s.url?`href="${s.url}" target="_blank" rel="noopener"`:''}><span class="n">${s.score}${s.scale==10?'':'/5'}</span><span class="lab"><b>${s.name}</b><br>${s.count} review${s.count==1?'':'s'}</span></a>`).join('');
+  const rv=(data.reviews||[]).filter(r=>r.text);
+  document.getElementById('rvgrid').innerHTML=rv.map(r=>{
+    const srcCls=r.source==='google'?'google':(r.source==='direct'?'direct':'');
+    const sc=r.scale==10?r.score:r.score;
+    return `<div class="rvcard"><div class="top"><div><div class="who">${r.name}<span class="src ${srcCls}">${SRCLABEL[r.source]||r.source}</span></div><div class="meta">${r.country||''} · ${r.stay||''}</div></div><div class="sc">${sc}${r.scale==10?'':'★'}</div></div><p class="q">“${r.text}”</p></div>`;
+  }).join('');
+}
+// fetch combined reviews.json (incremental: Booking + Google + organic); fallback to embedded
+fetch('/reviews.json?cb='+Date.now()).then(r=>r.json()).then(renderReviews).catch(()=>{
+  renderReviews({sources:[{id:'booking',name:'Booking.com',score:10,scale:10,count:11,url:'https://www.booking.com/hotel/gr/casa-valesa.html'},{id:'google',name:'Google',score:5,scale:5,count:2,url:'https://maps.google.com/?cid=1712313664098478263'}],
+   reviews:REVIEWS.map(r=>({source:'booking',name:r.n,country:r.c,stay:r.d,score:r.s,scale:10,text:r.t}))});
+});
 
 /* ---- gallery ---- */
 const exts={34:'png',35:'png',39:'png'}; const photo=n=>`/images/photo-${String(n).padStart(2,'0')}.${exts[n]||'jpeg'}`;

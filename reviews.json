@@ -1,0 +1,20 @@
+{
+  "updated": "2026-06-24",
+  "sources": [
+    {"id":"booking","name":"Booking.com","score":10,"scale":10,"count":11,"url":"https://www.booking.com/hotel/gr/casa-valesa.html"},
+    {"id":"google","name":"Google","score":5,"scale":5,"count":2,"url":"https://maps.google.com/?cid=1712313664098478263"},
+    {"id":"direct","name":"Direct guests","score":null,"scale":5,"count":0,"url":null}
+  ],
+  "reviews": [
+    {"source":"booking","name":"Cem","country":"🇹🇷 Turkey","stay":"Family · Aug 2025","score":10,"scale":10,"text":"It was such a great experience. Everything about the apartment was very well thought out and organised. Nicoleta and all her family were very warm, helpful and welcoming. The house was very clean. In just 30 seconds we were at the beach — it felt like a private beach. Around the house there are great restaurants and cafés, and parking was always easy."},
+    {"source":"booking","name":"Aneliya","country":"🇧🇬 Bulgaria","stay":"Family · Jul 2025","score":10,"scale":10,"text":"The photos correspond to reality. Extremely kind and hospitable hosts! Very comfortable beds and pillows, a quiet place — there's a mosquito net and blinds. Spacious, with everything you need. A plus: you walk along the coast to the main beach without crossing central streets. I recommend it."},
+    {"source":"booking","name":"Violina","country":"🇧🇬 Bulgaria","stay":"Family · Jul 2025","score":10,"scale":10,"text":"Everything was perfect. The hosts are exceptionally welcoming — such a warm welcome and send-off, always there for anything. The villa is fantastic: very clean, quiet and calm. The beds are very comfortable and the pillows like sleeping on a cloud. Beaches and restaurants nearby. Highly recommend!"},
+    {"source":"booking","name":"Sych","country":"🇺🇦 Ukraine","stay":"Family · Sep 2025","score":10,"scale":10,"text":"The apartment is large, spacious, cosy and clean; the kitchen has everything for cooking, and there's a BBQ area in the back yard. Bars and restaurants within walking distance and very close to the beach. The hosts surprised us most — wonderful, kind, welcoming people. We'll definitely come again."},
+    {"source":"booking","name":"Cristian","country":"🇬🇧 United Kingdom","stay":"Family · Aug 2025","score":10,"scale":10,"text":"Very large property and all you need for your family. Fully furnished and the kitchen is loaded with everything for cooking."},
+    {"source":"booking","name":"Desislava","country":"🇧🇬 Bulgaria","stay":"Family · Jul 2025","score":10,"scale":10,"text":"The apartment is clean and furnished with everything you need. The location is ideal — one minute from the beach. The hosts are kind and pleasant."},
+    {"source":"booking","name":"Szendrei","country":"🇭🇺 Hungary","stay":"Solo · Aug 2024","score":10,"scale":10,"text":"The owner's kindness, the sea view — the whole thing is just super, exactly as it is!"},
+    {"source":"booking","name":"Aliman","country":"🇷🇴 Romania","stay":"Family · Jun 2025","score":10,"scale":10,"text":"Excellent location."},
+    {"source":"google","name":"Chris Improvement","country":"🇬🇧 Google review","stay":"Google · 2025","score":5,"scale":5,"text":"Lovely apartment, very clean and comfortable, perfectly located near the beach, with great amenities and a friendly host."},
+    {"source":"google","name":"Tatiana Sv","country":"⭐ Local Guide","stay":"Google · 2025","score":5,"scale":5,"text":"This morning was our last day at Casa Valesa, and I'm already looking forward to coming back! The apartment is exactly as pictured — comfortable, spotless and welcoming."}
+  ]
+}
