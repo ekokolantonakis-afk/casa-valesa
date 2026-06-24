@@ -1,3 +1,8 @@
 .DS_Store
 node_modules/
 *.log
+
+# video: keep only the web-optimized commercial + poster in git
+video/raw/
+video/casa-valesa-45s.mp4
+video/casa-valesa-45s-final.mp4
