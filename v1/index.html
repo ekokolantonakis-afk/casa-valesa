@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Casa Valesa — Seaside apartment in Skala Sotiros, Thassos</title>
+<meta name="description" content="Casa Valesa — a stylish 2-bedroom apartment steps from the sea in Skala Sotiros, Thassos. Sleeps 6, with beach access, kitchen, A/C, Wi-Fi and free parking. Book your Greek island summer." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Casa Valesa — Seaside apartment in Skala Sotiros, Thassos" />
+<meta property="og:description" content="A stylish 2-bedroom seaside apartment on the emerald isle of Thassos. Sleeps 6. Beach access · kitchen · A/C · Wi-Fi · free parking." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="images/photo-01.jpeg" />
+
+<link rel="icon" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --marble:#F7F6F2;
+  --marble-2:#EDEBE3;
+  --pine:#12352A;
+  --pine-soft:#1C4A3B;
+  --aegean:#1F7A78;
+  --seaglass:#9FCEC8;
+  --sun:#E3A93C;
+  --ink:#16201C;
+  --muted:#5E6A64;
+  --line:rgba(18,53,42,.14);
+  --shadow:0 24px 60px -24px rgba(18,53,42,.35);
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--marble);color:var(--ink);
+  font-family:"Manrope",system-ui,sans-serif;font-weight:400;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.05;margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+
+/* ---- shared bits ---- */
+.eyebrow{
+  font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--aegean);font-weight:500;
+  display:inline-flex;align-items:center;gap:.7em;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--aegean);opacity:.7}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+section{padding:clamp(72px,11vw,140px) 0;position:relative}
+.vein{height:1px;border:0;margin:0;background:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent)}
+
+/* ---- nav ---- */
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,5vw,46px);
+  transition:background .4s ease,box-shadow .4s ease,padding .4s ease;
+}
+header.nav.scrolled{background:rgba(247,246,242,.86);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding-top:12px;padding-bottom:12px}
+.brand{font-family:"Cormorant Garamond",serif;font-size:1.5rem;letter-spacing:.02em;color:var(--marble);transition:color .4s}
+.brand b{font-weight:600}
+header.nav.scrolled .brand{color:var(--pine)}
+.brandwrap{display:flex;align-items:center;gap:10px}
+.navlogo{height:38px;width:auto;border-radius:6px}
+.loc-badge{display:inline-flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--marble);background:rgba(247,246,242,.14);border:1px solid rgba(247,246,242,.3);padding:5px 10px;border-radius:100px;white-space:nowrap}
+.loc-badge svg{flex:0 0 auto}
+header.nav.scrolled .loc-badge{color:var(--pine);background:rgba(18,53,42,.06);border-color:var(--line)}
+@media(max-width:560px){.loc-badge{display:none}}
+.navlinks{display:flex;gap:30px;align-items:center}
+.navlinks a{font-size:.83rem;letter-spacing:.04em;text-decoration:none;color:var(--marble);opacity:.9;transition:color .4s,opacity .2s}
+.navlinks a:hover{opacity:1}
+header.nav.scrolled .navlinks a{color:var(--pine)}
+.nav-cta{
+  font-family:"Manrope";font-size:.8rem;font-weight:600;letter-spacing:.03em;
+  padding:9px 18px;border-radius:100px;background:var(--sun);color:var(--pine)!important;
+  opacity:1!important;text-decoration:none;transition:transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(227,169,60,.8)}
+.menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--marble)}
+header.nav.scrolled .menu-btn{color:var(--pine)}
+
+/* ---- hero ---- */
+.hero{height:100svh;min-height:620px;position:relative;display:flex;align-items:flex-end;color:var(--marble);padding-bottom:clamp(48px,7vw,90px)}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:#0c241c}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:slowzoom 18s ease-out forwards}
+.hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@keyframes slowzoom{to{transform:scale(1)}}
+/* mobile + reduced-motion → show poster image, not the video */
+@media(max-width:780px){.hero-bg video{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-bg video{display:none}}
+
+/* Watch the film */
+.film{background:var(--marble-2)}
+.film .wrap{text-align:center}
+.film h2{font-size:clamp(2rem,5vw,3.4rem);margin:14px auto 10px}
+.film .lead{color:var(--muted);max-width:42ch;margin:0 auto 34px}
+.film .frame{position:relative;max-width:960px;margin:0 auto;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:#0c241c;aspect-ratio:16/9}
+.film video{width:100%;height:100%;display:block;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,28,22,.55) 0%,rgba(8,28,22,.04) 32%,rgba(8,28,22,.12) 60%,rgba(8,28,22,.82) 100%)}
+.hero h1{font-size:clamp(3rem,11vw,8.4rem);letter-spacing:-.01em;font-weight:500}
+.hero h1 em{font-style:italic;color:var(--seaglass)}
+.hero .sub{max-width:560px;font-size:1.06rem;color:rgba(247,246,242,.9);margin:18px 0 30px}
+.hero-meta{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--seaglass);margin-bottom:20px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:"Manrope";font-weight:600;font-size:.92rem;letter-spacing:.01em;padding:15px 26px;border-radius:100px;text-decoration:none;transition:transform .2s,box-shadow .25s,background .25s}
+.btn-pri{background:var(--sun);color:var(--pine);box-shadow:0 14px 34px -14px rgba(227,169,60,.9)}
+.btn-pri:hover{transform:translateY(-2px);box-shadow:0 20px 40px -14px rgba(227,169,60,1)}
+.btn-ghost{background:rgba(247,246,242,.1);color:var(--marble);border:1px solid rgba(247,246,242,.5);backdrop-filter:blur(4px)}
+.btn-ghost:hover{background:rgba(247,246,242,.2);transform:translateY(-2px)}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.3em;color:rgba(247,246,242,.7);writing-mode:vertical-rl;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ---- glance / stats ---- */
+.glance{background:var(--pine);color:var(--marble)}
+.glance .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.stat{text-align:left}
+.stat .n{font-family:"Cormorant Garamond",serif;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;color:var(--seaglass)}
+.stat .l{font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,246,242,.65);margin-top:8px}
+
+/* ---- intro ---- */
+.intro .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,90px);align-items:center}
+.intro h2{font-size:clamp(2.2rem,5vw,3.6rem);margin:18px 0 22px;max-width:14ch}
+.intro p{color:var(--muted);font-size:1.06rem;max-width:46ch}
+.intro p+p{margin-top:16px}
+.intro-fig{position:relative}
+.intro-fig img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);box-shadow:var(--shadow)}
+.intro-fig figcaption{position:absolute;bottom:-18px;left:-18px;background:var(--sun);color:var(--pine);font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:12px 18px;border-radius:10px;box-shadow:var(--shadow)}
+
+/* ---- gallery ---- */
+.gallery h2{font-size:clamp(2.2rem,5vw,3.6rem);margin:16px 0 6px}
+.gallery .lead{color:var(--muted);max-width:48ch;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.grid figure{margin:0;overflow:hidden;border-radius:10px;cursor:pointer;position:relative;background:var(--marble-2)}
+.grid figure img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.grid figure:hover img{transform:scale(1.07)}
+.grid figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(18,53,42,.35));opacity:0;transition:opacity .3s}
+.grid figure:hover::after{opacity:1}
+.tall{grid-row:span 2}
+.wide{grid-column:span 2}
+.more-btn{margin:36px auto 0;display:block}
+
+/* ---- amenities ---- */
+.amen{background:var(--marble-2)}
+.amen .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,80px)}
+.amen h2{font-size:clamp(2.2rem,5vw,3.4rem);margin:16px 0 18px}
+.amen .lead{color:var(--muted);max-width:36ch}
+.amlist{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.amlist .item{background:var(--marble);padding:22px 24px;display:flex;gap:14px;align-items:flex-start}
+.amlist .item svg{flex:0 0 22px;margin-top:2px;color:var(--aegean)}
+.amlist .item b{font-weight:600;font-size:.98rem;display:block}
+.amlist .item span{font-size:.82rem;color:var(--muted)}
+
+/* ---- area ---- */
+.area .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,6vw,80px);align-items:center}
+.area h2{font-size:clamp(2.2rem,5vw,3.4rem);margin:16px 0 20px}
+.area p{color:var(--muted);font-size:1.05rem;max-width:48ch}
+.area p+p{margin-top:14px}
+.near{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.08em;border:1px solid var(--line);border-radius:100px;padding:8px 15px;color:var(--pine);background:var(--marble)}
+.map{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.map iframe{display:block;width:100%;height:420px;border:0;filter:saturate(1.05)}
+
+/* ---- book ---- */
+.book{background:var(--pine);color:var(--marble);text-align:center}
+.book h2{font-size:clamp(2.6rem,6vw,4.6rem);margin:18px auto 16px;max-width:18ch}
+.book h2 em{font-style:italic;color:var(--seaglass)}
+.book p{color:rgba(247,246,242,.78);max-width:46ch;margin:0 auto 34px;font-size:1.06rem}
+.book .hero-actions{justify-content:center}
+.book .btn-ghost{border-color:rgba(247,246,242,.4)}
+.bform{max-width:640px;margin:40px auto 0;text-align:left;background:rgba(247,246,242,.06);border:1px solid rgba(247,246,242,.16);border-radius:16px;padding:28px}
+.bform h3{font-family:"Cormorant Garamond",serif;color:#fff;font-size:1.7rem;margin:0 0 16px;text-align:center}
+.bform .row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.bform label{flex:1;min-width:140px;display:flex;flex-direction:column;font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--seaglass);gap:6px}
+.bform input,.bform select,.bform textarea{font-family:"Manrope",sans-serif;font-size:.95rem;padding:11px 13px;border-radius:9px;border:1px solid rgba(247,246,242,.25);background:rgba(255,255,255,.95);color:var(--ink);width:100%}
+.bform textarea{resize:vertical}
+.bform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.bform button{width:100%;justify-content:center;margin-top:6px;cursor:pointer;border:0}
+.bform .fmsg{text-align:center;margin:14px 0 0;font-size:.9rem;color:var(--seaglass);min-height:1.2em}
+.bform .fmsg.ok{color:#9be7a0}.bform .fmsg.warn{color:#f0c674}.bform .fmsg.err{color:#f3a3a3}
+.wa{background:#25D366;color:#06351d}
+.wa:hover{transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(37,211,102,.7)}
+.viber{background:#7360F2;color:#fff}
+.viber:hover{transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(115,96,242,.7)}
+
+/* ---- footer ---- */
+footer.foot{background:#0c241c;color:rgba(247,246,242,.7);font-size:.86rem}
+footer.foot .wrap{padding-top:54px;padding-bottom:54px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer.foot .brand{color:var(--marble);font-size:1.7rem;margin-bottom:10px}
+footer.foot a{color:var(--seaglass);text-decoration:none}
+.reg{font-family:"JetBrains Mono",monospace;font-size:.74rem;letter-spacing:.08em;color:rgba(247,246,242,.5);margin-top:14px}
+
+/* ---- lightbox ---- */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(8,20,16,.94);display:none;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:86vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb button{position:absolute;background:rgba(247,246,242,.12);border:1px solid rgba(247,246,242,.3);color:#fff;width:52px;height:52px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lb button:hover{background:rgba(247,246,242,.26)}
+.lb .close{top:24px;right:24px}
+.lb .prev{left:24px;top:50%;transform:translateY(-50%)}
+.lb .next{right:24px;top:50%;transform:translateY(-50%)}
+.lb .count{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:"JetBrains Mono",monospace;font-size:.78rem;letter-spacing:.16em;color:rgba(247,246,242,.8)}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- responsive ---- */
+@media(max-width:900px){
+  .navlinks{display:none}
+  .menu-btn{display:block}
+  .glance .wrap{grid-template-columns:1fr 1fr;gap:34px 20px}
+  .intro .wrap,.amen .wrap,.area .wrap{grid-template-columns:1fr;gap:40px}
+  .area .map{order:-1}
+  .amlist{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .wide{grid-column:span 2}
+  .tall{grid-row:span 1}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="brandwrap"><img class="navlogo" src="brand/logo-icon.png" alt="Casa Valesa island logo" /><div class="brand">Casa <b>Valesa</b></div><span class="loc-badge"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="#1F7A78" d="M3 16c2-5 5-8 9-8s7 3 9 8c-3 2-5.5 2-9 2s-6-0-9-2z"/><circle cx="18" cy="6" r="2.1" fill="#E3A93C"/><path stroke="#9FCEC8" stroke-width="1.3" fill="none" d="M2 20c2 1 4 1 6 0s4-1 6 0 4 1 6 0"/></svg>Thassos · Greece</span></div>
+  <nav class="navlinks">
+    <a href="#stay">The stay</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#film">Film</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#area">The island</a>
+    <a href="explore-thassos.html">Explore</a>
+    <a href="blog/index.html">Journal</a>
+    <a href="#book" class="nav-cta">Book now</a>
+  </nav>
+  <button class="menu-btn" aria-label="Jump to booking" onclick="document.getElementById('book').scrollIntoView()">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="images/photo-01.jpeg" alt="Casa Valesa, seaside in Skala Sotiros, Thassos" />
+    <video autoplay muted loop playsinline preload="auto" poster="video/casa-valesa-poster.jpg">
+      <source src="video/casa-valesa-commercial.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="wrap">
+    <div class="hero-meta">Θάσος · North Aegean · Greece</div>
+    <h1>Casa <em>Valesa</em></h1>
+    <p class="sub">A stylish two-bedroom apartment a short stroll from the sea in Skala Sotiros — your home base on the emerald isle of Thassos.</p>
+    <div class="hero-actions">
+      <a class="btn btn-pri" href="#book">Check availability
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#gallery">View the photos</a>
+    </div>
+  </div>
+  <div class="scrollcue">Scroll</div>
+</section>
+
+<!-- AT A GLANCE -->
+<section class="glance" style="padding-top:0;padding-bottom:0">
+  <div class="wrap" style="padding-top:clamp(46px,7vw,72px);padding-bottom:clamp(46px,7vw,72px)">
+    <div class="stat reveal"><div class="n">6</div><div class="l">Guests</div></div>
+    <div class="stat reveal"><div class="n">2</div><div class="l">Bedrooms</div></div>
+    <div class="stat reveal"><div class="n">1</div><div class="l">Bathroom</div></div>
+    <div class="stat reveal"><div class="n">Walk</div><div class="l">To the beach</div></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="stay">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">The stay</span>
+      <h2>Easy days by the water, room for the whole family</h2>
+      <p>Casa Valesa is an entire apartment made for unhurried island summers. Two bedrooms sleep six, a full kitchen handles the long lunches, and air-conditioning keeps every room cool through the August heat.</p>
+      <p>Step out and you're minutes from the pebbled shore of Skala Sotiros, the village tavernas, and the quiet west coast of Thassos — pine forest on one side, clear Aegean on the other.</p>
+    </div>
+    <figure class="intro-fig reveal">
+      <img src="images/photo-08.jpeg" alt="Inside Casa Valesa" />
+      <figcaption>Entire apartment · Skala Sotiros</figcaption>
+    </figure>
+  </div>
+</section>
+
+<hr class="vein" />
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2>Look around</h2>
+      <p class="lead">Every room, the terrace, and the view that comes with it. Tap any photo to open it full-screen.</p>
+    </div>
+    <div class="grid" id="grid"><!-- images injected by JS --></div>
+    <button class="btn btn-pri more-btn" id="moreBtn">Show all 52 photos</button>
+  </div>
+</section>
+
+<!-- WATCH THE FILM -->
+<section class="film" id="film">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">The film</span>
+      <h2>45 seconds in Skala Sotiros</h2>
+      <p class="lead">From the front gate to the sunset over the bay — turn the sound on.</p>
+    </div>
+    <div class="frame reveal">
+      <video controls preload="none" playsinline poster="video/casa-valesa-poster.jpg">
+        <source src="video/casa-valesa-commercial.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amen" id="amenities">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">What's inside</span>
+      <h2>Everything you need, nothing you'll fuss over</h2>
+      <p class="lead">A fully-equipped apartment set up for a comfortable, self-catered island stay.</p>
+    </div>
+    <div class="amlist reveal" id="amlist"><!-- injected --></div>
+  </div>
+</section>
+
+<!-- AREA -->
+<section class="area" id="area">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Σκάλα Σωτήρος · The island</span>
+      <h2>Skala Sotiros, on the emerald isle</h2>
+      <p>Thassos is the greenest of the Greek islands — pine forest tumbling straight down to turquoise water, white-marble quarries the Romans prized, and a coastline of easy, family-friendly beaches.</p>
+      <p>Skala Sotiros sits on the calm west coast: a relaxed seaside village with tavernas, a sand-and-pebble beach, and sunsets over the water. Ferries reach the island from Keramoti and Kavala on the mainland.</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.04em;color:var(--pine);margin-top:18px">📍 Σκάλα Σωτήρος 640 10, Thassos &nbsp;·&nbsp; <a href="https://maps.google.com/?q=Casa+Valesa+Skala+Sotiros" target="_blank" rel="noopener" style="color:var(--aegean);text-decoration:underline">Open in Google Maps ↗</a></p>
+      <div class="near">
+        <span class="chip">Beach · walkable</span>
+        <span class="chip">Limenas (Thassos Town) · ~25 min</span>
+        <span class="chip">Keramoti ferry · ~40 min + boat</span>
+        <span class="chip">Kavala airport (KVA)</span>
+      </div>
+    </div>
+    <div class="map reveal">
+      <iframe title="Map of Casa Valesa, Skala Sotiros, Thassos" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=24.5405%2C40.7257%2C24.5605%2C40.7357&layer=mapnik&marker=40.730728%2C24.5505072"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book" id="book">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--seaglass)">Reserve your dates</span>
+    <h2>Your Thassos summer <em>starts here</em></h2>
+    <p>Check live availability and prices on Airbnb, or message us directly — we're happy to help you plan the trip.</p>
+    <div class="hero-actions">
+      <a class="btn btn-pri" href="https://www.airbnb.com/rooms/1157207333231807379" target="_blank" rel="noopener">Book on Airbnb
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.519 5.26l-.999 3.648 3.469-.91zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+        WhatsApp
+      </a>
+      <a class="btn viber" id="viberBtn" href="#" target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.5.03 5.3.34 2.96 2.49 1.22 4.22.61 6.78.54 9.95.48 13.11.39 19.04 6.1 20.65h.01l-.01 2.45s-.04.99.62 1.19c.79.25 1.26-.51 2.02-1.33.42-.45 1-1.12 1.43-1.63 3.91.33 6.91-.42 7.25-.53.79-.26 5.26-.83 5.99-6.77.75-6.12-.36-9.99-2.37-11.74l-.01-.01c-.61-.56-3.06-2.34-8.53-2.36 0 0-.41-.03-1.13-.01zm.06 1.71c.61-.01.99.01.99.01 4.63.02 6.85 1.51 7.37 1.98 1.69 1.46 2.56 4.95 1.93 10.07v.01c-.62 4.96-4.24 5.27-4.91 5.49-.29.09-2.93.75-6.25.53 0 0-2.47 2.98-3.24 3.75-.12.12-.26.17-.35.15-.13-.03-.17-.18-.17-.4l.02-4.07c-4.83-1.34-4.55-6.39-4.5-9.03.06-2.65.55-4.81 2.02-6.26 1.98-1.79 5.56-2.04 7.17-2.06z"/><path d="M12 5.5c-.28 0-.5.22-.5.5s.22.5.5.5c2.48 0 4.5 2.02 4.5 4.5 0 .28.22.5.5.5s.5-.22.5-.5c0-3.03-2.47-5.5-5.5-5.5z"/><path d="M12 7.7c-.28 0-.5.22-.5.5s.22.5.5.5c1.27 0 2.3 1.03 2.3 2.3 0 .28.22.5.5.5s.5-.22.5-.5c0-1.82-1.48-3.3-3.3-3.3z"/></svg>
+        Viber
+      </a>
+      <a class="btn btn-ghost" id="reviewBtn" href="#" target="_blank" rel="noopener">★ Reviews on Google</a>
+    </div>
+    <p style="margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.1em;color:var(--seaglass)">WhatsApp / Viber <a href="#" id="callWa" style="color:var(--marble);text-decoration:underline">+30 698 675 7880</a> &nbsp;·&nbsp; tel <a href="tel:+306974482062" style="color:var(--marble);text-decoration:underline">+30 697 448 2062</a></p>
+
+    <form class="bform" id="bookForm" autocomplete="on">
+      <h3>Request your dates</h3>
+      <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="row">
+        <label>Check-in<input type="date" name="checkin" required></label>
+        <label>Check-out<input type="date" name="checkout" required></label>
+        <label>Guests<select name="guests"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label>
+      </div>
+      <div class="row">
+        <label>Name<input type="text" name="name" required></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Phone<input type="tel" name="phone" placeholder="optional"></label>
+      </div>
+      <label>Message<textarea name="message" rows="2" placeholder="Anything we should know?"></textarea></label>
+      <input type="hidden" name="type" value="booking">
+      <button type="submit" class="btn btn-pri" id="bSubmit">Send request</button>
+      <p class="fmsg" id="bMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <div class="brand">Casa Valesa</div>
+      <div>Σκάλα Σωτήρος 640 10 · Thassos, North Aegean, Greece</div>
+      <div style="margin-top:6px"><a href="tel:+306974482062">+30 697 448 2062</a></div>
+      <div class="reg">EOT / Reg. No. 00002524808</div>
+    </div>
+    <div>
+      <div style="margin-bottom:8px;color:var(--marble)">Plan your stay</div>
+      <div><a href="https://www.airbnb.com/rooms/1157207333231807379" target="_blank" rel="noopener">View on Airbnb ↗</a></div>
+      <div style="margin-top:6px"><a href="#gallery">Photo gallery</a></div>
+      <div style="margin-top:6px"><a href="#area">About Thassos</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="close" aria-label="Close" onclick="LB.close()">✕</button>
+  <button class="prev" aria-label="Previous" onclick="LB.step(-1)">‹</button>
+  <img id="lbImg" src="" alt="Casa Valesa photo" />
+  <button class="next" aria-label="Next" onclick="LB.step(1)">›</button>
+  <div class="count" id="lbCount"></div>
+</div>
+
+<script>
+/* ====== CONFIG — fill in Georgia's WhatsApp number ====== */
+const WHATSAPP_NUMBER = "306986757880"; // WhatsApp/Viber — +30 698 675 7880
+const VIBER_NUMBER    = "306986757880"; // same line on Viber
+const CALL_NUMBER     = "306974482062"; // landline/sign — +30 697 448 2062
+const GOOGLE_REVIEW_URL = "https://maps.google.com/?cid=1712313664098478263"; // Casa Valesa — Google listing (reviews)
+const WHATSAPP_MESSAGE = "Hello! I'd like to ask about Casa Valesa in Skala Sotiros.";
+
+/* ====== PHOTOS ====== */
+const exts = {34:'png',35:'png',39:'png'}; // these three are .png, the rest .jpeg
+const photo = n => `images/photo-${String(n).padStart(2,'0')}.${exts[n]||'jpeg'}`;
+// 52 best shots — photo-31 dropped as a near-duplicate of photo-05
+const SKIP = new Set([31]);
+const photos = Array.from({length:53},(_,i)=>i+1).filter(n=>!SKIP.has(n)).map(photo);
+
+/* Build gallery — give the first dozen a curated mosaic, rest uniform */
+const grid = document.getElementById('grid');
+const accent = {1:'wide',3:'tall',6:'tall',8:'wide',11:'tall'};
+const PREVIEW = 12;
+function addTile(src,i){
+  const fig=document.createElement('figure');
+  if(accent[i+1]) fig.className=accent[i+1];
+  fig.innerHTML=`<img loading="lazy" src="${src}" alt="Casa Valesa — photo ${i+1}">`;
+  fig.onclick=()=>LB.open(i);
+  grid.appendChild(fig);
+}
+photos.slice(0,PREVIEW).forEach(addTile);
+let expanded=false;
+document.getElementById('moreBtn').onclick=function(){
+  if(expanded)return;
+  photos.slice(PREVIEW).forEach((s,k)=>addTile(s,k+PREVIEW));
+  expanded=true;this.style.display='none';
+};
+
+/* ====== AMENITIES ====== */
+const ic={
+  beach:'<path d="M12 2a9 9 0 00-9 9h18a9 9 0 00-9-9z"/><path d="M12 11v11"/><path d="M3 18c3 1.5 6 1.5 9 0s6-1.5 9 0"/>',
+  kitchen:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v6M16 3v4"/>',
+  wifi:'<path d="M5 12.5a10 10 0 0114 0"/><path d="M8.5 16a5 5 0 017 0"/><circle cx="12" cy="19" r="1"/>',
+  parking:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 010 6H9"/>',
+  tv:'<rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/>',
+  sea:'<path d="M2 6c2 0 2 1.5 4 1.5S8 6 10 6s2 1.5 4 1.5S16 6 18 6s2 1.5 4 1.5"/><path d="M2 12c2 0 2 1.5 4 1.5S8 12 10 12s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/><path d="M2 18c2 0 2 1.5 4 1.5S8 18 10 18s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/>',
+  balcony:'<rect x="3" y="3" width="18" height="8" rx="1"/><path d="M3 14h18M6 14v7M10 14v7M14 14v7M18 14v7M3 21h18"/>',
+  washer:'<rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 5h.01"/>',
+  ac:'<rect x="3" y="5" width="18" height="8" rx="2"/><path d="M7 17c0 1.5-1 2-1 3M12 17c0 1.5-1 2-1 3M17 17c0 1.5-1 2-1 3"/>',
+  fire:'<path d="M12 2s5 4 5 9a5 5 0 01-10 0c0-2 1-3 1-3s.5 2 2 2c0-3 2-5 2-8z"/>',
+  aid:'<rect x="3" y="6" width="18" height="14" rx="2"/><path d="M12 10v6M9 13h6M8 6V4h8v2"/>'
+};
+const amenities=[
+  ['sea','Sea views','Wake up to the Aegean'],
+  ['balcony','Private balcony','Morning coffee, evening wine'],
+  ['beach','Beach access','A short walk to the Skala Sotiros shore'],
+  ['kitchen','Full kitchen','Cook in for long island lunches'],
+  ['ac','Air conditioning','Cool rooms through the summer'],
+  ['wifi','Fast Wi-Fi','Work-from-anywhere ready'],
+  ['parking','Free parking','On-premises, no hunting for a spot'],
+  ['tv','TV','For the slow evenings in'],
+  ['washer','Washer','Pack light, wash as you go'],
+  ['fire','Safety equipped','Fire extinguisher & first-aid kit']
+];
+document.getElementById('amlist').innerHTML=amenities.map(a=>`
+  <div class="item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ic[a[0]]}</svg>
+    <div><b>${a[1]}</b><span>${a[2]}</span></div>
+  </div>`).join('');
+
+/* ====== LIGHTBOX ====== */
+const LB={
+  i:0,
+  el:document.getElementById('lb'),
+  img:document.getElementById('lbImg'),
+  cnt:document.getElementById('lbCount'),
+  open(i){this.i=i;this.render();this.el.classList.add('open');document.body.style.overflow='hidden';},
+  close(){this.el.classList.remove('open');document.body.style.overflow='';},
+  step(d){this.i=(this.i+d+photos.length)%photos.length;this.render();},
+  render(){this.img.src=photos[this.i];this.cnt.textContent=`${this.i+1} / ${photos.length}`;}
+};
+document.getElementById('lb').addEventListener('click',e=>{if(e.target.id==='lb')LB.close();});
+document.addEventListener('keydown',e=>{
+  if(!LB.el.classList.contains('open'))return;
+  if(e.key==='Escape')LB.close();
+  if(e.key==='ArrowRight')LB.step(1);
+  if(e.key==='ArrowLeft')LB.step(-1);
+});
+
+/* ====== CONTACT LINKS ====== */
+(function(){
+  const wa=document.getElementById('waBtn');
+  wa.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const vb=document.getElementById('viberBtn');
+  vb.href=`viber://chat?number=%2B${VIBER_NUMBER}`;
+  const rv=document.getElementById('reviewBtn');
+  rv.href=GOOGLE_REVIEW_URL;
+  const bf=document.getElementById('bookForm');
+  if(bf){
+    const msg=document.getElementById('bMsg'), btn=document.getElementById('bSubmit');
+    bf.addEventListener('submit', async e=>{
+      e.preventDefault();
+      const ci=bf.checkin.value, co=bf.checkout.value;
+      if(ci && co && co<=ci){ msg.className='fmsg err'; msg.textContent='Check-out must be after check-in.'; return; }
+      btn.disabled=true; msg.className='fmsg'; msg.textContent='Sending…';
+      try{
+        const r=await fetch('/api/enquiry.php',{method:'POST',body:new URLSearchParams(new FormData(bf))});
+        const d=await r.json();
+        if(d.ok && d.available===false){ msg.className='fmsg warn'; msg.textContent='Those dates look taken — we’ll suggest the closest free dates by email.'; bf.reset(); }
+        else if(d.ok){ msg.className='fmsg ok'; msg.textContent='Thank you! We’ve got your request and will reply shortly.'; bf.reset(); }
+        else { msg.className='fmsg err'; msg.textContent='Please check the form and try again.'; }
+      }catch(_){ msg.className='fmsg err'; msg.textContent='Network error — please WhatsApp us instead.'; }
+      btn.disabled=false;
+    });
+  }
+  const cw=document.getElementById('callWa');
+  if(cw) cw.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+})();
+
+/* ====== NAV + REVEAL ====== */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
