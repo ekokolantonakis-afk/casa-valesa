@@ -5,6 +5,9 @@
 |-------|------|---------|
 | Commercial (1080p, with music, 28 MB) | `video/casa-valesa-commercial.mp4` | `https://raw.githubusercontent.com/ekokolantonakis-afk/casa-valesa/main/video/casa-valesa-commercial.mp4` |
 | Poster frame (balcony sea view) | `video/casa-valesa-poster.jpg` | `https://raw.githubusercontent.com/ekokolantonakis-afk/casa-valesa/main/video/casa-valesa-poster.jpg` |
+| Vertical 9:16 (Reels/TikTok/Stories, with music, 16 MB) | `video/casa-valesa-vertical.mp4` | `https://raw.githubusercontent.com/ekokolantonakis-afk/casa-valesa/main/video/casa-valesa-vertical.mp4` |
+
+> **Already embedded on casavalesa.gr:** the commercial runs as a muted autoplay loop in the **hero** (poster fallback on mobile + reduced-motion) and again with sound in the **“45 seconds in Skala Sotiros”** section. The 9:16 file is for social only.
 
 > The 45s edit runs: exterior arrival → balcony sea view → living room → bedroom → dining → beach access → beach → sunset, ending on the title card *“CASA VALESA · SKALA SOTIROS • THASSOS · Your peaceful escape by the sea.”* Music: “Sunset Over Casa Valesa”.
 
