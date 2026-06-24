@@ -206,7 +206,32 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding:18px 26px;text-al
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
-@media(max-width:980px){.navlinks{display:none}.menu-btn{display:block}}
+.menu-btn{display:none}
+@media(max-width:980px){.navlinks{display:none}}
+/* ---- mobile nav + layout ---- */
+@media(max-width:760px){
+  .topbar{padding:10px 15px}
+  .brandwrap{gap:8px}
+  .navlogo{height:32px}
+  .brand{font-size:1.2rem;white-space:nowrap}
+  .badge{display:none}
+  .navright{gap:9px}
+  .navbook{padding:8px 13px;font-size:.72rem}
+  .langbtn{padding:7px 10px;font-size:.7rem}
+  .hero{padding-top:74px}
+  .hero h1{font-size:clamp(2.1rem,9vw,3rem);max-width:none}
+  .hero .sub{font-size:1rem}
+  .hero-actions{gap:10px}.hero-actions .btn{flex:1 1 100%;justify-content:center}
+  .soundtoggle{right:15px;bottom:16px}
+  .glance .wrap{gap:18px 16px;padding:34px 15px}
+  .stat .n{font-size:1.8rem}
+  .ap ul{grid-template-columns:1fr}
+  .whc,.amcol{padding:18px}
+  .book .aside .btns .btn{justify-content:center}
+  form label{min-width:100%}
+  footer .wrap{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media(max-width:400px){.brand{font-size:1.05rem}.navbook{padding:7px 11px}}
 </style>
 </head>
 <body>
