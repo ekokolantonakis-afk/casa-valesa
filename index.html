@@ -165,6 +165,16 @@ header.nav.scrolled .menu-btn{color:var(--pine)}
 .book p{color:rgba(247,246,242,.78);max-width:46ch;margin:0 auto 34px;font-size:1.06rem}
 .book .hero-actions{justify-content:center}
 .book .btn-ghost{border-color:rgba(247,246,242,.4)}
+.bform{max-width:640px;margin:40px auto 0;text-align:left;background:rgba(247,246,242,.06);border:1px solid rgba(247,246,242,.16);border-radius:16px;padding:28px}
+.bform h3{font-family:"Cormorant Garamond",serif;color:#fff;font-size:1.7rem;margin:0 0 16px;text-align:center}
+.bform .row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.bform label{flex:1;min-width:140px;display:flex;flex-direction:column;font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--seaglass);gap:6px}
+.bform input,.bform select,.bform textarea{font-family:"Manrope",sans-serif;font-size:.95rem;padding:11px 13px;border-radius:9px;border:1px solid rgba(247,246,242,.25);background:rgba(255,255,255,.95);color:var(--ink);width:100%}
+.bform textarea{resize:vertical}
+.bform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.bform button{width:100%;justify-content:center;margin-top:6px;cursor:pointer;border:0}
+.bform .fmsg{text-align:center;margin:14px 0 0;font-size:.9rem;color:var(--seaglass);min-height:1.2em}
+.bform .fmsg.ok{color:#9be7a0}.bform .fmsg.warn{color:#f0c674}.bform .fmsg.err{color:#f3a3a3}
 .wa{background:#25D366;color:#06351d}
 .wa:hover{transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(37,211,102,.7)}
 .viber{background:#7360F2;color:#fff}
@@ -220,6 +230,7 @@ footer.foot a{color:var(--seaglass);text-decoration:none}
     <a href="#film">Film</a>
     <a href="#amenities">Amenities</a>
     <a href="#area">The island</a>
+    <a href="explore-thassos.html">Explore</a>
     <a href="blog/index.html">Journal</a>
     <a href="#book" class="nav-cta">Book now</a>
   </nav>
@@ -363,6 +374,25 @@ footer.foot a{color:var(--seaglass);text-decoration:none}
       <a class="btn btn-ghost" id="reviewBtn" href="#" target="_blank" rel="noopener">★ Reviews on Google</a>
     </div>
     <p style="margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.1em;color:var(--seaglass)">WhatsApp / Viber <a href="#" id="callWa" style="color:var(--marble);text-decoration:underline">+30 698 675 7880</a> &nbsp;·&nbsp; tel <a href="tel:+306974482062" style="color:var(--marble);text-decoration:underline">+30 697 448 2062</a></p>
+
+    <form class="bform" id="bookForm" autocomplete="on">
+      <h3>Request your dates</h3>
+      <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="row">
+        <label>Check-in<input type="date" name="checkin" required></label>
+        <label>Check-out<input type="date" name="checkout" required></label>
+        <label>Guests<select name="guests"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label>
+      </div>
+      <div class="row">
+        <label>Name<input type="text" name="name" required></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Phone<input type="tel" name="phone" placeholder="optional"></label>
+      </div>
+      <label>Message<textarea name="message" rows="2" placeholder="Anything we should know?"></textarea></label>
+      <input type="hidden" name="type" value="booking">
+      <button type="submit" class="btn btn-pri" id="bSubmit">Send request</button>
+      <p class="fmsg" id="bMsg" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 
@@ -485,6 +515,24 @@ document.addEventListener('keydown',e=>{
   vb.href=`viber://chat?number=%2B${VIBER_NUMBER}`;
   const rv=document.getElementById('reviewBtn');
   rv.href=GOOGLE_REVIEW_URL;
+  const bf=document.getElementById('bookForm');
+  if(bf){
+    const msg=document.getElementById('bMsg'), btn=document.getElementById('bSubmit');
+    bf.addEventListener('submit', async e=>{
+      e.preventDefault();
+      const ci=bf.checkin.value, co=bf.checkout.value;
+      if(ci && co && co<=ci){ msg.className='fmsg err'; msg.textContent='Check-out must be after check-in.'; return; }
+      btn.disabled=true; msg.className='fmsg'; msg.textContent='Sending…';
+      try{
+        const r=await fetch('/api/enquiry.php',{method:'POST',body:new URLSearchParams(new FormData(bf))});
+        const d=await r.json();
+        if(d.ok && d.available===false){ msg.className='fmsg warn'; msg.textContent='Those dates look taken — we’ll suggest the closest free dates by email.'; bf.reset(); }
+        else if(d.ok){ msg.className='fmsg ok'; msg.textContent='Thank you! We’ve got your request and will reply shortly.'; bf.reset(); }
+        else { msg.className='fmsg err'; msg.textContent='Please check the form and try again.'; }
+      }catch(_){ msg.className='fmsg err'; msg.textContent='Network error — please WhatsApp us instead.'; }
+      btn.disabled=false;
+    });
+  }
   const cw=document.getElementById('callWa');
   if(cw) cw.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 })();
