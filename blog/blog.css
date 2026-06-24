@@ -84,3 +84,4 @@ footer .brand{color:#fff;font-size:1.5rem;display:block;margin-bottom:8px}
 .brandwrap{display:flex;align-items:center;gap:10px}
 .loc-badge{display:inline-flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pine);background:var(--marble-2);border:1px solid var(--line);padding:5px 9px;border-radius:100px;white-space:nowrap}
 @media(max-width:560px){.loc-badge{display:none}}
+.navlogo{height:34px;width:auto;border-radius:6px}

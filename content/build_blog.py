@@ -39,7 +39,7 @@ def hero_credit(slug):
     return f'<p class="imgcredit">Image: <a href="{html.escape(url)}" target="_blank" rel="noopener nofollow">{html.escape(txt)}</a> (via Wikimedia Commons)</p>'
 
 NAV = ('<header class="nav"><div class="inner">'
- '<span class="brandwrap"><a class="brand" href="../index.html">Casa <b>Valesa</b></a><span class=\"loc-badge\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" aria-hidden=\"true\"><path fill=\"#1F7A78\" d=\"M3 16c2-5 5-8 9-8s7 3 9 8c-3 2-5.5 2-9 2s-6 0-9-2z\"/><circle cx=\"18\" cy=\"6\" r=\"2.1\" fill=\"#E3A93C\"/><path stroke=\"#7fb9b3\" stroke-width=\"1.3\" fill=\"none\" d=\"M2 20c2 1 4 1 6 0s4-1 6 0 4 1 6 0\"/></svg>Thassos · Greece</span></span>'
+ '<span class="brandwrap"><img class="navlogo" src="../brand/logo-icon.png" alt="Casa Valesa"><a class="brand" href="../index.html">Casa <b>Valesa</b></a><span class=\"loc-badge\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" aria-hidden=\"true\"><path fill=\"#1F7A78\" d=\"M3 16c2-5 5-8 9-8s7 3 9 8c-3 2-5.5 2-9 2s-6 0-9-2z\"/><circle cx=\"18\" cy=\"6\" r=\"2.1\" fill=\"#E3A93C\"/><path stroke=\"#7fb9b3\" stroke-width=\"1.3\" fill=\"none\" d=\"M2 20c2 1 4 1 6 0s4-1 6 0 4 1 6 0\"/></svg>Thassos · Greece</span></span>'
  '<nav><a href="index.html" style="text-decoration:none;color:var(--pine);margin-right:18px;font-size:.86rem">Journal</a>'
  '<a class="book" href="../index.html#book">Book now</a></nav></div></header>')
 
@@ -109,7 +109,7 @@ def render(a):
 <meta property="og:description" content="{html.escape(a.get('meta_description',''))}">
 <meta property="og:image" content="{SITE}/blog/{hero}"><meta property="og:url" content="{SITE}/blog/{a['slug']}.html">
 <meta name="twitter:card" content="summary_large_image">
-{FONTS}<link rel="stylesheet" href="blog.css">
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">{FONTS}<link rel="stylesheet" href="blog.css">
 {jsonld(a,lang)}
 </head><body>
 {NAV}
@@ -163,7 +163,7 @@ idx=f'''<!DOCTYPE html><html lang="en"><head>
 <title>Thassos Travel Journal — Casa Valesa, Skala Sotiros</title>
 <meta name="description" content="Local guides to Thassos: where to stay, the best quiet beaches, family itineraries, ferries and the drive from the Balkans — from Casa Valesa in Skala Sotiros.">
 <link rel="canonical" href="{SITE}/blog/index.html">
-{FONTS}<link rel="stylesheet" href="blog.css"></head><body>
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">{FONTS}<link rel="stylesheet" href="blog.css"></head><body>
 {NAV}
 <div class="idxwrap"><div class="idx-hero"><span class="eyebrow">The journal</span>
 <h1>Thassos, by someone who lives it</h1>
