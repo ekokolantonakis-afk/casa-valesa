@@ -149,10 +149,22 @@ section{padding:clamp(64px,9vw,120px) 0;position:relative}
 .whc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
 .whc h3{font-size:1.25rem;margin-bottom:8px}.whc p{font-size:.9rem;color:var(--muted)}
 .rv{background:var(--marble-2);text-align:center}
-.rv .empty{max-width:560px;margin:24px auto 0;background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:38px}
-.rv .empty .q{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.6rem;color:var(--pine)}
-.rv .empty p{color:var(--muted);margin:12px 0 22px}
-.rv .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.rvhead{display:inline-flex;align-items:center;gap:22px;margin:16px auto 8px;text-align:left;flex-wrap:wrap;justify-content:center}
+.rvbadge{display:flex;align-items:baseline;background:var(--emerald);color:#fff;border-radius:14px;padding:14px 20px;box-shadow:var(--shadow)}
+.rvnum{font-family:"Cormorant Garamond",serif;font-size:3rem;line-height:1}.rvslash{font-size:1.1rem;opacity:.8;margin-left:3px}
+.rvword{font-family:"Cormorant Garamond",serif;font-size:1.9rem;color:var(--pine)}
+.rvcount{display:block;font-size:.9rem;color:var(--muted);text-decoration:none;margin-top:2px}.rvcount b{color:var(--emerald)}
+.rvsubs{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.04em;color:var(--pine)}
+.rvsubs span b{color:var(--aegean)}
+.rvgrid{columns:3 300px;column-gap:18px;margin:34px 0 8px;text-align:left}
+@media(max-width:760px){.rvgrid{columns:1}}
+.rvcard{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:0 0 18px;box-shadow:0 10px 30px -22px rgba(20,61,46,.5)}
+.rvcard .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.rvcard .who{font-weight:600;color:var(--pine)}
+.rvcard .meta{font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.rvcard .sc{background:var(--emerald);color:#fff;border-radius:8px;font-weight:600;font-size:.85rem;padding:4px 9px;font-family:"JetBrains Mono",monospace}
+.rvcard .q{color:#34403a;font-size:.95rem;line-height:1.6}
+.rvactions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
 
 /* faq */
 .faq h2{font-size:clamp(2rem,4.5vw,3rem);margin:12px 0 18px}
@@ -389,15 +401,20 @@ footer .copy{border-top:1px solid rgba(255,255,255,.1);padding:18px 26px;text-al
   </div>
 </section>
 
-<!-- REVIEWS (empty state) -->
+<!-- REVIEWS -->
 <section class="rv" id="reviews">
   <div class="wrap reveal">
     <span class="eyebrow" data-i18n="rv_eyebrow">Guest reviews</span>
-    <h2 data-i18n="rv_title">The first reviews are on their way.</h2>
-    <p class="lead" style="margin:0 auto" data-i18n="rv_p"></p>
-    <div class="empty"><div class="q" data-i18n="rv_empty_quote"></div><p data-i18n="rv_empty_p"></p>
-      <div class="btns"><a class="btn btn-pri" href="#book" data-i18n="rv_cta_book">Book your stay</a><a class="btn btn-ghost" style="color:var(--pine)" href="https://www.airbnb.com/rooms/1157207333231807379" target="_blank" rel="noopener" data-i18n="rv_cta_airbnb">See us on Airbnb</a></div>
+    <div class="rvhead">
+      <div class="rvbadge"><div class="rvnum">10</div><div class="rvslash">/10</div></div>
+      <div class="rvmeta">
+        <div class="rvword">Exceptional</div>
+        <a class="rvcount" href="https://www.booking.com/hotel/gr/casa-valesa.html" target="_blank" rel="noopener"><b>11</b> verified guest reviews on Booking.com ↗</a>
+        <div class="rvsubs" id="rvsubs"></div>
+      </div>
     </div>
+    <div class="rvgrid" id="rvgrid"></div>
+    <div class="rvactions"><a class="btn btn-pri" href="#book" data-i18n="rv_cta_book">Book your stay</a><a class="btn btn-ghost" style="color:var(--pine)" href="https://www.booking.com/hotel/gr/casa-valesa.html" target="_blank" rel="noopener">Read all on Booking.com</a></div>
   </div>
 </section>
 
@@ -532,6 +549,21 @@ const AM=[["am_kitchen",["am_k1","am_k2","am_k3","am_k4","am_k5"]],["am_comfort"
 document.getElementById('amgrid').innerHTML=AM.map(([h,items])=>`<div class="amcol"><h3 data-i18n="${h}"></h3><ul>${items.map(k=>`<li data-i18n="${k}"></li>`).join('')}</ul></div>`).join('');
 let faq=''; for(let i=1;i<=8;i++) faq+=`<details><summary data-i18n="faq_q${i}"></summary><div class="a" data-i18n="faq_a${i}"></div></details>`;
 document.getElementById('faqbox').innerHTML=faq;
+
+/* ---- reviews (verified on Booking.com) ---- */
+const RV_SUBS={"Staff":10,"Cleanliness":10,"Comfort":10,"Facilities":10,"Value":10,"WiFi":10,"Location":9.8};
+const REVIEWS=[
+ {n:"Cem",c:"🇹🇷 Turkey",d:"Family · Aug 2025",s:10,t:"It was such a great experience. Everything about the apartment was very well thought out and organised. Nicoleta and all her family were very warm, helpful and welcoming. The house was very clean. In just 30 seconds we were at the beach — it felt like a private beach. Around the house there are great restaurants and cafés, and parking was always easy."},
+ {n:"Aneliya",c:"🇧🇬 Bulgaria",d:"Family · Jul 2025",s:10,t:"The photos correspond to reality. Extremely kind and hospitable hosts! Very comfortable beds and pillows, a quiet place — there's a mosquito net and blinds. Spacious, with everything you need. A plus: you walk along the coast to the main beach without crossing central streets. I recommend it."},
+ {n:"Violina",c:"🇧🇬 Bulgaria",d:"Family · Jul 2025",s:10,t:"Everything was perfect. The hosts are exceptionally welcoming — such a warm welcome and send-off, always there for anything. The villa is fantastic: very clean, quiet and calm. The beds are very comfortable and the pillows like sleeping on a cloud. Beaches and restaurants nearby. Highly recommend!"},
+ {n:"Sych",c:"🇺🇦 Ukraine",d:"Family · Sep 2025",s:10,t:"The apartment is large, spacious, cosy and clean; the kitchen has everything for cooking, and there's a BBQ area in the back yard. Bars and restaurants within walking distance and very close to the beach. The hosts surprised us most — wonderful, kind, welcoming people. We'll definitely come again."},
+ {n:"Cristian",c:"🇬🇧 United Kingdom",d:"Family · Aug 2025",s:10,t:"Very large property and all you need for your family. Fully furnished and the kitchen is loaded with everything for cooking."},
+ {n:"Desislava",c:"🇧🇬 Bulgaria",d:"Family · Jul 2025",s:10,t:"The apartment is clean and furnished with everything you need. The location is ideal — one minute from the beach. The hosts are kind and pleasant."},
+ {n:"Szendrei",c:"🇭🇺 Hungary",d:"Solo · Aug 2024",s:10,t:"The owner's kindness, the sea view — the whole thing is just super, exactly as it is!"},
+ {n:"Aliman",c:"🇷🇴 Romania",d:"Family · Jun 2025",s:10,t:"Excellent location."}
+];
+document.getElementById('rvsubs').innerHTML=Object.entries(RV_SUBS).map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join('');
+document.getElementById('rvgrid').innerHTML=REVIEWS.map(r=>`<div class="rvcard"><div class="top"><div><div class="who">${r.n}</div><div class="meta">${r.c} · ${r.d}</div></div><div class="sc">${r.s}</div></div><p class="q">“${r.t}”</p></div>`).join('');
 
 /* ---- gallery ---- */
 const exts={34:'png',35:'png',39:'png'}; const photo=n=>`/images/photo-${String(n).padStart(2,'0')}.${exts[n]||'jpeg'}`;

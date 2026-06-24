@@ -1,0 +1,21 @@
+{
+  "source": "Booking.com",
+  "url": "https://www.booking.com/hotel/gr/casa-valesa.html",
+  "score": 10,
+  "scale": 10,
+  "word": "Exceptional",
+  "count": 11,
+  "subscores": {"Staff":10,"Facilities":10,"Cleanliness":10,"Comfort":10,"Value for money":10,"Free WiFi":10,"Location":9.8},
+  "reviews": [
+    {"name":"Cem","country":"Turkey","date":"Aug 2025","type":"Family · 5 nights","score":10,"text":"It was such a great experience. Everything about the apartment was very well thought out and organised. Nicoleta and all her family were very warm, helpful and welcoming. The house was very clean with all facilities in place. In just 30 seconds we were at the beach — it felt like a private beach. Around the house there are great restaurants, cafés and snack bars. Parking was very easy and always available."},
+    {"name":"Aneliya","country":"Bulgaria","date":"Jul 2025","type":"Family · 6 nights","score":10,"text":"The photos correspond to reality. Extremely kind and hospitable hosts! Very comfortable beds and pillows, a quiet place, easy to sleep — there's a mosquito net and blinds. Spacious, with everything you need. A plus: you walk along the coast to the main beach without crossing central streets. I recommend it."},
+    {"name":"Violina","country":"Bulgaria","date":"Jul 2025","type":"Family · 7 nights","score":10,"text":"Everything was perfect. The hosts are exceptionally welcoming and kind — such a warm welcome and send-off, always there for anything. The villa is fantastic: very clean, quiet and calm. The beds are very comfortable and the pillows are like sleeping on a cloud. It has everything you need for a holiday, with beaches and restaurants nearby. Highly recommend!"},
+    {"name":"Sych","country":"Ukraine","date":"Sep 2025","type":"Family · 3 nights","score":10,"text":"We stayed in early September as a family. The apartment is large, spacious, cosy and clean; the kitchen has everything for cooking, and there's a BBQ area in the back yard. Bars and restaurants are within walking distance and it's very close to the beach. The hosts surprised us most — wonderful, kind, welcoming people. If we can, we'll definitely come again."},
+    {"name":"Cristian","country":"United Kingdom","date":"Aug 2025","type":"Family · 6 nights","score":10,"text":"Very large property and all you need for your family. Fully furnished and the kitchen is loaded with everything for cooking."},
+    {"name":"Desislava","country":"Bulgaria","date":"Jul 2025","type":"Family · 7 nights","score":10,"text":"The apartment is clean and furnished with everything you need. The location is ideal — one minute from the beach. The hosts are kind and pleasant."},
+    {"name":"Szendrei","country":"Hungary","date":"Aug 2024","type":"Solo · 4 nights","score":10,"text":"The owner's kindness, the sea view — the whole thing is just super, exactly as it is!"},
+    {"name":"Aliman","country":"Romania","date":"Jun 2025","type":"Family · 6 nights","score":10,"text":"Excellent location."},
+    {"name":"Dragomir","country":"Serbia","date":"Aug 2024","type":"Solo · 11 nights","score":9,"text":""},
+    {"name":"Mihai","country":"Romania","date":"Aug 2025","type":"Group · 5 nights","score":10,"text":""}
+  ]
+}
