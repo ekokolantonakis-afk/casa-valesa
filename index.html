@@ -155,6 +155,8 @@ header.nav.scrolled .menu-btn{color:var(--pine)}
 .book .btn-ghost{border-color:rgba(247,246,242,.4)}
 .wa{background:#25D366;color:#06351d}
 .wa:hover{transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(37,211,102,.7)}
+.viber{background:#7360F2;color:#fff}
+.viber:hover{transform:translateY(-2px);box-shadow:0 18px 36px -14px rgba(115,96,242,.7)}
 
 /* ---- footer ---- */
 footer.foot{background:#0c241c;color:rgba(247,246,242,.7);font-size:.86rem}
@@ -317,10 +319,15 @@ footer.foot a{color:var(--seaglass);text-decoration:none}
       </a>
       <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.519 5.26l-.999 3.648 3.469-.91zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
-        Message us on WhatsApp
+        WhatsApp
       </a>
+      <a class="btn viber" id="viberBtn" href="#" target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.5.03 5.3.34 2.96 2.49 1.22 4.22.61 6.78.54 9.95.48 13.11.39 19.04 6.1 20.65h.01l-.01 2.45s-.04.99.62 1.19c.79.25 1.26-.51 2.02-1.33.42-.45 1-1.12 1.43-1.63 3.91.33 6.91-.42 7.25-.53.79-.26 5.26-.83 5.99-6.77.75-6.12-.36-9.99-2.37-11.74l-.01-.01c-.61-.56-3.06-2.34-8.53-2.36 0 0-.41-.03-1.13-.01zm.06 1.71c.61-.01.99.01.99.01 4.63.02 6.85 1.51 7.37 1.98 1.69 1.46 2.56 4.95 1.93 10.07v.01c-.62 4.96-4.24 5.27-4.91 5.49-.29.09-2.93.75-6.25.53 0 0-2.47 2.98-3.24 3.75-.12.12-.26.17-.35.15-.13-.03-.17-.18-.17-.4l.02-4.07c-4.83-1.34-4.55-6.39-4.5-9.03.06-2.65.55-4.81 2.02-6.26 1.98-1.79 5.56-2.04 7.17-2.06z"/><path d="M12 5.5c-.28 0-.5.22-.5.5s.22.5.5.5c2.48 0 4.5 2.02 4.5 4.5 0 .28.22.5.5.5s.5-.22.5-.5c0-3.03-2.47-5.5-5.5-5.5z"/><path d="M12 7.7c-.28 0-.5.22-.5.5s.22.5.5.5c1.27 0 2.3 1.03 2.3 2.3 0 .28.22.5.5.5s.5-.22.5-.5c0-1.82-1.48-3.3-3.3-3.3z"/></svg>
+        Viber
+      </a>
+      <a class="btn btn-ghost" id="reviewBtn" href="#" target="_blank" rel="noopener">★ Reviews on Google</a>
     </div>
-    <p style="margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.1em;color:var(--seaglass)">or call <a href="tel:+306974482062" style="color:var(--marble);text-decoration:underline">+30 697 448 2062</a></p>
+    <p style="margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.1em;color:var(--seaglass)">WhatsApp / Viber <a href="#" id="callWa" style="color:var(--marble);text-decoration:underline">+30 698 675 7880</a> &nbsp;·&nbsp; tel <a href="tel:+306974482062" style="color:var(--marble);text-decoration:underline">+30 697 448 2062</a></p>
   </div>
 </section>
 
@@ -352,7 +359,10 @@ footer.foot a{color:var(--seaglass);text-decoration:none}
 
 <script>
 /* ====== CONFIG — fill in Georgia's WhatsApp number ====== */
-const WHATSAPP_NUMBER = "306974482062"; // Casa Valesa — +30 697 448 2062
+const WHATSAPP_NUMBER = "306986757880"; // WhatsApp/Viber — +30 698 675 7880
+const VIBER_NUMBER    = "306986757880"; // same line on Viber
+const CALL_NUMBER     = "306974482062"; // landline/sign — +30 697 448 2062
+const GOOGLE_REVIEW_URL = "https://maps.google.com/?cid=1712313664098478263"; // Casa Valesa — Google listing (reviews)
 const WHATSAPP_MESSAGE = "Hello! I'd like to ask about Casa Valesa in Skala Sotiros.";
 
 /* ====== PHOTOS ====== */
@@ -432,14 +442,16 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft')LB.step(-1);
 });
 
-/* ====== WHATSAPP ====== */
+/* ====== CONTACT LINKS ====== */
 (function(){
-  const btn=document.getElementById('waBtn');
-  if(WHATSAPP_NUMBER){
-    btn.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-  }else{
-    btn.style.display='none';
-  }
+  const wa=document.getElementById('waBtn');
+  wa.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const vb=document.getElementById('viberBtn');
+  vb.href=`viber://chat?number=%2B${VIBER_NUMBER}`;
+  const rv=document.getElementById('reviewBtn');
+  rv.href=GOOGLE_REVIEW_URL;
+  const cw=document.getElementById('callWa');
+  if(cw) cw.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 })();
 
 /* ====== NAV + REVEAL ====== */

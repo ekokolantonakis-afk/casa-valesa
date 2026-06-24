@@ -1,7 +1,7 @@
 # Casa Valesa — Holiday Rental Marketing Website (Design Prompt)
 
 > **How to use:** Paste everything below the line into claude.ai's design tool (Claude Artifacts / claude.ai/design).
-> **Before pasting, do ONE replacement:** swap every `{{REPO_RAW_BASE}}` for your real public GitHub raw base URL, e.g. `https://raw.githubusercontent.com/youruser/casa-valesa/main/images` (no trailing slash).
+> **Before pasting, do ONE replacement:** swap every `https://raw.githubusercontent.com/ekokolantonakis-afk/casa-valesa/main/images` for your real public GitHub raw base URL, e.g. `https://raw.githubusercontent.com/youruser/casa-valesa/main/images` (no trailing slash).
 
 ---
 
@@ -42,8 +42,8 @@ Build me a complete, production-quality marketing website for a single holiday r
 
 All 52 real photos live in a public GitHub repo. Pull hero + gallery strictly from these URLs:
 
-- Base: `{{REPO_RAW_BASE}}`
-- Pattern: `{{REPO_RAW_BASE}}/photo-01.jpeg`, `photo-02.jpeg`, … up to `photo-53.jpeg`
+- Base: `https://raw.githubusercontent.com/ekokolantonakis-afk/casa-valesa/main/images`
+- Pattern: `https://raw.githubusercontent.com/ekokolantonakis-afk/casa-valesa/main/images/photo-01.jpeg`, `photo-02.jpeg`, … up to `photo-53.jpeg`
 - **Important quirks:**
   - **`photo-31` is skipped** — there is no photo-31; do not request it.
   - **`photo-34`, `photo-35`, `photo-39` are `.png`** (not `.jpeg`).
